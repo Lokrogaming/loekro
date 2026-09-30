@@ -1,0 +1,110 @@
+
+
+/* =========================
+   Glassmorphism
+   ========================= */
+
+.glass {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glassCard {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 1rem;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.liquid-glass {
+  position: relative;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.30),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+}
+
+/* Lichtreflex auf dem Glas */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.12),
+      transparent 30%,
+      transparent 70%,
+      rgba(255, 255, 255, 0.04)
+    );
+
+  pointer-events: none;
+}
+
+/* Inhalt über dem Reflex */
+.liquid-glass > * {
+  position: relative;
+  z-index: 1;
+}
+.liquid-glass::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 200%;
+  top: -50%;
+  left: -20%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+
+  transform: rotate(20deg);
+  animation: liquid-shine 8s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+@keyframes liquid-shine {
+  0% {
+    transform: translateX(-100%) rotate(20deg);
+  }
+
+  50% {
+    transform: translateX(250%) rotate(20deg);
+  }
+
+  100% {
+    transform: translateX(250%) rotate(20deg);
+  }
+}

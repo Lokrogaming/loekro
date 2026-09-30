@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+/* Fonts */
+
+.google-sans-gs {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  
+  font-style: normal;
+  font-variation-settings:
+    "GRAD" 0;
+}
+.cal-sans {
+  font-family: "Cal Sans", sans-serif;
+  font-style: normal;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 2000ms ease-in-out 200ms infinite alternate;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+.animate-bounce {
+  animation: bounce 1000ms ease-in-out 200ms infinite alternate;
+}
+@keyframes loader {
+  0% {
+    transform: translateY(-25%) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  25% {
+    transform: translateY(0) rotate(90deg);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  50% {
+    transform: translateY(-25%) rotate(180deg);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  75% {
+    transform: translateY(0) rotate(270deg);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  100% {
+    transform: translateY(-25%) rotate(360deg);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+}
+
+.animate-loader {
+  animation: loader 1000ms ease-in-out 200ms infinite;
+}
+@keyframes loader2 {
+  0% {
+    transform: translateY(-25%) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(0) rotate(90deg);
+  }
+
+  50% {
+    transform: translateY(-25%) rotate(180deg);
+  }
+
+  75% {
+    transform: translateY(0) rotate(270deg);
+  }
+
+  100% {
+    transform: translateY(-25%) rotate(360deg);
+  }
+}
+
+.animate-loader2 {
+  animation: loader2 1s ease-in-out 200ms infinite;
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 2500ms ease-in-out 0ms infinite normal;
+}
+/* Text / Cards / UI Els */
+.profileCard {
+  position: relative;
+  overflow: hidden;
+  background: #0a0308;
+}
+
+.profileCard::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+
+  background:
+    radial-gradient(circle at 30% 20%, #E0115F 0%, transparent 70%),
+    radial-gradient(circle at 70% 80%, #9B111E 0%, transparent 70%);
+
+  filter: blur(50px);
+  z-index: 0;
+}
+
+.profileCard > * {
+  position: relative;
+  z-index: 1;
+}
+.gradient-text-profile {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #22c55e 0%,
+    #14b8a6 25%,
+    #06b6d4 50%,
+    #14b8a6 75%,
+    #22c55e 100%
+  );
+
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: gradient-shift 5s linear infinite;
+}
+.gradient-text-rb {
+  background: linear-gradient(to right, #ef4444, #22c55e, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 900;
+}
+
+.gradient-text-sunset {
+  background: linear-gradient(to right, #f97316, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 900;
+}
+
+.gradient-text-red {
+  background: linear-gradient(to right, #fb7185, #f43f5e, #e11d48);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-weight: 900;
+}
+#redParticles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+}
