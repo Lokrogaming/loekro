@@ -1,153 +1,589 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <!-- https://material.io/resources/icons/?style=outline -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
-      rel="stylesheet">
-<!-- https://material.io/resources/icons/?style=round -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round"
-      rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/glass.css">
-    <link rel="stylesheet" href="styles/starsbg.css">
-  </head>
-<body class="bg-black">
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bündnis Kevin Teller — Wir wollen etwas bewegen.</title>
+  <meta name="description" content="Wir sind das Bündnis Kevin Teller: Community, Humor mit Haltung und ein Wahlprogramm zum Mitmachen. Finde uns auf Twitch, YouTube, Reddit & Discord." />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/glass.css">
+  <link rel="stylesheet" href="styles/starsbg.css">
+  <style>
+    ::selection { background: #dc2626; color: white; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #dc2626; }
 
-  <!-- Permanenter Hintergrund -->
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 28s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .red-glow { box-shadow: 0 0 60px -12px rgba(220,38,38,.45), 0 8px 32px rgba(0,0,0,.4); }
+    .card-hover { transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s, background .3s; }
+    .card-hover:hover { transform: translateY(-6px); border-color: rgba(220,38,38,.5); box-shadow: 0 20px 50px -12px rgba(220,38,38,.35); }
+
+    details.program > summary { list-style: none; cursor: pointer; }
+    details.program > summary::-webkit-details-marker { display: none; }
+    details.program[open] .program-chevron { transform: rotate(180deg); }
+    .program-chevron { transition: transform .3s; }
+    details.program[open] .program-body { animation: fadeSlide .35s ease both; }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body class="bg-black text-white antialiased overflow-x-hidden">
+
+  <!-- Permanenter Sternenhimmel -->
   <div class="stars-bg fixed inset-0 z-0 pointer-events-none">
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
   </div>
-
-  <!-- HERO -->
-  <section class="relative z-10 min-h-screen bg-transparent">
-    <div id="hero" class="flex flex-col items-center justify-center w-full min-h-screen">
-    <div class="glass rounded-xl p-6 m-3 text-white flex flex-col justify-center items-center">
-      <p class="text-3xl cal-sans">wir wollen etwas bewegen<span class="text-red-600">.</span></p>
-      <div class="w-3/4 h-px bg-slate-400/60 mx-auto my-6"></div>
-      <p class="text-xl text-slate-500 google-sans-gs font-bold">Wir sind das <span class="text-red-600 decoration-solid decoration-red-600 underline">Bündnis Kevin Teller</span></p>
-      </p>
-    </div>
-    </div>
-  </section>
-
-  <!-- RESTLICHER CONTENT -->
-  <section class="relative z-20 bg-black p-10">
-    
-    <div class="glass rounded-xl flex flex-col items-center justify-center p-5 w-full max-w-md mx-auto">
-
-  <!-- Überschrift -->
-  <p class="google-sans-gs font-bold text-2xl text-white text-center">
-    hier findest du uns<span class="text-red-600 cal-sans">:</span>
-  </p>
-
-  <!-- Divider -->
-  <div class="w-3/4 h-px bg-slate-400/60 my-6"></div>
-
-  <!-- Social Grid -->
-  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 w-full justify-items-center">
-
-    <a
-      href="https://twitch.tv/bktofficial"
-      aria-label="Twitch"
-      class="glass rounded-xl size-12 flex items-center justify-center
-             text-2xl text-violet-500
-             transition-all duration-200
-             hover:scale-110 hover:text-violet-400"
-    >
-      <i class="bi bi-twitch"></i>
-    </a>
-
-    <a
-      href="https://youtube.com/@bundniskevinteller?si=L2JyZd6RMqOUY0Ls"
-      aria-label="YouTube"
-      class="glass rounded-xl size-12 flex items-center justify-center
-             text-2xl text-red-500
-             transition-all duration-200
-             hover:scale-110 hover:text-red-400"
-    >
-      <i class="bi bi-youtube"></i>
-    </a>
-
-    <a
-      href="https://www.reddit.com/u/bktofficial/s/ydKQLLgj7Q"
-      aria-label="Reddit"
-      class="glass rounded-xl size-12 flex items-center justify-center
-             text-2xl text-orange-500
-             transition-all duration-200
-             hover:scale-110 hover:text-orange-400"
-    >
-      <i class="bi bi-reddit"></i>
-    </a>
-        <a
-      href="#"
-      aria-label="Discord"
-      class="glass rounded-xl size-12 flex items-center justify-center
-             text-2xl text-indigo-500
-             transition-all duration-200
-             hover:scale-110 hover:text-indigo-400"
-    >
-      <i class="bi bi-discord"></i>
-    </a>
-
+  <!-- Roter Glow oben -->
+  <div class="fixed inset-x-0 top-0 z-0 pointer-events-none">
+    <div class="mx-auto h-72 max-w-5xl bg-red-600/15 blur-[140px] rounded-full"></div>
   </div>
 
-</div>
-    
+  <!-- ============ NAVIGATION ============ -->
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <nav class="mx-auto mt-3 flex max-w-6xl items-center justify-between gap-3 rounded-2xl glass px-4 py-3 sm:px-6 mx-3 lg:mx-auto">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="flex size-10 items-center justify-center rounded-xl bg-red-600 text-white shadow-lg shadow-red-600/40">
+          <span class="material-icons-round">how_to_vote</span>
+        </span>
+        <span class="leading-tight">
+          <span class="block cal-sans text-base font-bold tracking-tight">Bündnis Kevin Teller</span>
+          <span class="block text-[11px] uppercase tracking-[0.2em] text-slate-400 google-sans-gs">wir bewegen was.</span>
+        </span>
+      </a>
+      <div class="hidden items-center gap-1 text-sm google-sans-gs font-semibold text-slate-300 md:flex">
+        <a href="#mission" class="rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white">Mission</a>
+        <a href="#werte" class="rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white">Werte</a>
+        <a href="#community" class="rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white">Community</a>
+        <a href="#programm" class="rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white">Wahlprogramm</a>
+        <a href="#aktuelles" class="rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white">Aktuelles</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="#mitmachen" class="hidden rounded-xl bg-red-600 px-4 py-2 text-sm font-bold google-sans-gs shadow-lg shadow-red-600/30 transition hover:-translate-y-0.5 hover:bg-red-500 sm:inline-flex items-center gap-2">
+          <span class="material-icons-round text-base">rocket_launch</span> Mitmachen
+        </a>
+        <button id="menuBtn" aria-label="Menü öffnen" class="flex size-10 items-center justify-center rounded-xl glass text-white md:hidden">
+          <span class="material-icons-round">menu</span>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile Menü -->
+    <div id="mobileMenu" class="mx-3 mt-2 hidden rounded-2xl glass p-3 md:hidden">
+      <div class="flex flex-col text-sm google-sans-gs font-semibold text-slate-200">
+        <a href="#mission" class="rounded-lg px-3 py-2.5 hover:bg-white/5">Mission</a>
+        <a href="#werte" class="rounded-lg px-3 py-2.5 hover:bg-white/5">Werte</a>
+        <a href="#community" class="rounded-lg px-3 py-2.5 hover:bg-white/5">Community</a>
+        <a href="#programm" class="rounded-lg px-3 py-2.5 hover:bg-white/5">Wahlprogramm</a>
+        <a href="#aktuelles" class="rounded-lg px-3 py-2.5 hover:bg-white/5">Aktuelles</a>
+        <a href="#mitmachen" class="mt-1 rounded-xl bg-red-600 px-3 py-2.5 text-center font-bold text-white">Mitmachen</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="relative z-10 flex min-h-screen items-center justify-center px-4 pt-28 pb-16">
+    <div class="w-full max-w-4xl text-center">
+      <div class="reveal visible inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs google-sans-gs font-bold uppercase tracking-[0.18em] text-slate-300">
+        <span class="relative flex size-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75"></span>
+          <span class="relative inline-flex size-2 rounded-full bg-red-500"></span>
+        </span>
+        Community · Humor · Haltung
+      </div>
+
+      <h1 class="reveal visible mt-6 cal-sans text-5xl leading-[1.02] font-bold tracking-tight sm:text-7xl">
+        wir wollen<br />etwas bewegen<span class="text-red-600">.</span>
+      </h1>
+
+      <p class="reveal visible reveal-delay-1 mx-auto mt-6 max-w-2xl text-lg text-slate-400 google-sans-gs sm:text-xl">
+        Wir sind das
+        <a href="#mission" class="font-bold text-white underline decoration-red-600 decoration-2 underline-offset-4 hover:text-red-400">Bündnis Kevin Teller</a>
+        — eine offene Community, die Politik, Netz & Alltag mit Kreativität und Zusammenhalt angeht.
+      </p>
+
+      <div class="reveal visible reveal-delay-2 mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="#programm" class="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-red-600 px-7 py-3.5 font-bold google-sans-gs shadow-xl shadow-red-600/30 transition hover:-translate-y-0.5 hover:bg-red-500">
+          <span class="material-icons-round">description</span>
+          Wahlprogramm lesen
+          <span class="material-icons-round transition-transform group-hover:translate-x-1">arrow_downward</span>
+        </a>
+        <a href="#community" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl glass px-7 py-3.5 font-bold google-sans-gs text-white card-hover">
+          <span class="material-icons-round text-violet-400">groups</span>
+          Community entdecken
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="reveal visible reveal-delay-3 mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-3">
+        <div class="glass rounded-2xl px-3 py-4">
+          <p class="cal-sans text-3xl font-bold"><span data-count="6">6</span><span class="text-red-600">.</span></p>
+          <p class="mt-1 text-xs uppercase tracking-widest text-slate-400 google-sans-gs font-bold">Kernforderungen</p>
+        </div>
+        <div class="glass rounded-2xl px-3 py-4">
+          <p class="cal-sans text-3xl font-bold"><span data-count="4">4</span><span class="text-red-600">+</span></p>
+          <p class="mt-1 text-xs uppercase tracking-widest text-slate-400 google-sans-gs font-bold">Plattformen</p>
+        </div>
+        <div class="glass rounded-2xl px-3 py-4">
+          <p class="cal-sans text-3xl font-bold">100<span class="text-red-600">%</span></p>
+          <p class="mt-1 text-xs uppercase tracking-widest text-slate-400 google-sans-gs font-bold">Ehrenamt</p>
+        </div>
+      </div>
+
+      <a href="#mission" class="mt-12 inline-flex flex-col items-center gap-1 text-slate-500 transition hover:text-white" aria-label="Nach unten scrollen">
+        <span class="text-xs uppercase tracking-[0.25em] google-sans-gs font-bold">Scroll</span>
+        <span class="material-icons-round animate-bounce">expand_more</span>
+      </a>
+    </div>
   </section>
-  <section class="relative min-h-screen overflow-hidden bg-black">
 
-  <!-- Roter Partikel-Canvas -->
-  <canvas id="redParticles"></canvas>
+  <!-- Laufband -->
+  <div class="relative z-10 overflow-hidden border-y border-white/10 bg-black/60 py-3 backdrop-blur">
+    <div class="marquee-track flex w-max items-center gap-8 whitespace-nowrap text-sm google-sans-gs font-bold uppercase tracking-[0.2em] text-slate-400">
+      <span>Transparenz <span class="text-red-600">·</span></span><span>Community <span class="text-red-600">·</span></span><span>Digitalisierung <span class="text-red-600">·</span></span><span>Kreativität <span class="text-red-600">·</span></span><span>Zusammenhalt <span class="text-red-600">·</span></span><span>Bildung <span class="text-red-600">·</span></span>
+      <span>Transparenz <span class="text-red-600">·</span></span><span>Community <span class="text-red-600">·</span></span><span>Digitalisierung <span class="text-red-600">·</span></span><span>Kreativität <span class="text-red-600">·</span></span><span>Zusammenhalt <span class="text-red-600">·</span></span><span>Bildung <span class="text-red-600">·</span></span>
+    </div>
+  </div>
 
-  <!-- Content über den Partikeln -->
-  <div class="relative z-10 min-h-screen flex items-center justify-center p-6">
-    
-    <div class="glass rounded-2xl p-8 text-white">
-      <h2 class="text-3xl cal-sans font-bold mb-5">
-        unser wahlprogramm<span class="text-red-600">:</span>
-      </h2>
-
-      <div class="rounded-xl border-2 border-slate-400 p-3">
-        <div class="flex flex-col gap-1">
-          <button
-  class="
-    group
-    flex flex-col items-center
-    p-2 rounded-lg
-    bg-black
-
-    transition-all duration-300
-
-    hover:scale-105
-    hover:bg-orange-950
-
-    focus:scale-105
-    focus:bg-orange-950
-
-    active:scale-95
-    active:bg-red-950
-  "
->
-            <span class="material-icons-round group-focus:text-red-500 transform ease-in-out duration-300 ">
-paid
-</span> 
-<div class="w-3/4 h-px bg-slate-400/60 mx-auto my-1"></div>
-            <p class="text-white cal-sans text-lg">Test</p>
-          </button>
+  <!-- ============ MISSION ============ -->
+  <section id="mission" class="relative z-10 mx-auto max-w-6xl scroll-mt-28 px-4 py-20 sm:py-28">
+    <div class="grid items-stretch gap-5 lg:grid-cols-5">
+      <div class="reveal liquid-glass rounded-3xl p-8 sm:p-10 lg:col-span-3">
+        <p class="inline-flex items-center gap-2 rounded-full bg-red-600/15 px-3 py-1 text-xs google-sans-gs font-bold uppercase tracking-[0.18em] text-red-400">
+          <span class="material-icons-round text-sm">flag</span> Unsere Mission
+        </p>
+        <h2 class="mt-4 cal-sans text-3xl font-bold sm:text-4xl">Politik darf auch Spaß machen — und trotzdem ernst gemeint sein<span class="text-red-600">.</span></h2>
+        <p class="mt-4 leading-relaxed text-slate-300 google-sans-gs">
+          Das Bündnis Kevin Teller ist aus Streams, Chats und langen Nächten entstanden: Wir glauben, dass Veränderung dort beginnt, wo Menschen zusammenkommen, lachen und trotzdem Klartext reden. Deshalb verbinden wir Community-Arbeit mit klaren Forderungen — vom Glasfaser-Anschluss bis zum Jugendzentrum um die Ecke.
+        </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div class="flex flex-1 items-center gap-3 rounded-2xl bg-black/40 border border-white/10 p-4">
+            <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-violet-600/20 text-violet-400"><span class="material-icons-round">forum</span></span>
+            <p class="text-sm text-slate-300 google-sans-gs"><strong class="text-white">Zuhören zuerst.</strong> Jede Forderung startet als Idee aus der Community.</p>
+          </div>
+          <div class="flex flex-1 items-center gap-3 rounded-2xl bg-black/40 border border-white/10 p-4">
+            <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-red-600/20 text-red-400"><span class="material-icons-round">bolt</span></span>
+            <p class="text-sm text-slate-300 google-sans-gs"><strong class="text-white">Machen statt meckern.</strong> Kleine Aktionen schlagen große Worte.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-5 lg:col-span-2">
+        <figure class="reveal reveal-delay-1 glass rounded-3xl p-8 red-glow">
+          <span class="material-icons-round text-4xl text-red-600">format_quote</span>
+          <blockquote class="mt-2 text-xl cal-sans leading-snug">„Wenn Kevin Teller das kann, können wir das alle. Zusammen.”</blockquote>
+          <figcaption class="mt-4 text-sm text-slate-400 google-sans-gs">— inoffizielles Motto der Community</figcaption>
+        </figure>
+        <div class="reveal reveal-delay-2 glass rounded-3xl p-6">
+          <p class="text-xs uppercase tracking-[0.2em] text-slate-400 google-sans-gs font-bold">So arbeiten wir</p>
+          <ul class="mt-3 space-y-3 text-sm google-sans-gs text-slate-200">
+            <li class="flex items-center gap-3"><span class="material-icons-round text-green-400">check_circle</span> Offene Calls & Abstimmungen im Discord</li>
+            <li class="flex items-center gap-3"><span class="material-icons-round text-green-400">check_circle</span> Streams mit Gästen aus Bildung, Kultur & Ehrenamt</li>
+            <li class="flex items-center gap-3"><span class="material-icons-round text-green-400">check_circle</span> Aktionen vor Ort statt nur Hashtags</li>
+          </ul>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
+  <!-- ============ WERTE ============ -->
+  <section id="werte" class="relative z-10 scroll-mt-28 bg-black/60 border-y border-white/10 py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <p class="text-xs google-sans-gs font-bold uppercase tracking-[0.25em] text-red-500">Wofür wir stehen</p>
+        <h2 class="mt-3 cal-sans text-3xl font-bold sm:text-5xl">vier werte, null ausreden<span class="text-red-600">.</span></h2>
+        <div class="mx-auto my-6 h-px w-24 bg-slate-400/40"></div>
+      </div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="reveal glass rounded-3xl p-6 card-hover">
+          <span class="flex size-12 items-center justify-center rounded-2xl bg-red-600/20 text-red-400"><span class="material-icons-round text-2xl">diversity_3</span></span>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Zusammenhalt</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 google-sans-gs">Niemand wird zurückgelassen — weder im Chat noch im echten Leben. Wir helfen, vernetzen und feiern Erfolge gemeinsam.</p>
+        </div>
+        <div class="reveal reveal-delay-1 glass rounded-3xl p-6 card-hover">
+          <span class="flex size-12 items-center justify-center rounded-2xl bg-sky-600/20 text-sky-400"><span class="material-icons-round text-2xl">visibility</span></span>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Transparenz</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 google-sans-gs">Offene Kassen, offene Entscheidungen, offene Ohren. Wer mitmacht, weiß immer, woran wir gerade arbeiten.</p>
+        </div>
+        <div class="reveal reveal-delay-2 glass rounded-3xl p-6 card-hover">
+          <span class="flex size-12 items-center justify-center rounded-2xl bg-violet-600/20 text-violet-400"><span class="material-icons-round text-2xl">palette</span></span>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Kreativität</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 google-sans-gs">Memes, Clips, Musik, Kunst: Kultur ist unser Megafon. Mit Humor erreichen wir Köpfe, die Parolen nie erreichen.</p>
+        </div>
+        <div class="reveal reveal-delay-3 glass rounded-3xl p-6 card-hover">
+          <span class="flex size-12 items-center justify-center rounded-2xl bg-emerald-600/20 text-emerald-400"><span class="material-icons-round text-2xl">handyman</span></span>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Anpacken</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400 google-sans-gs">Clean-ups, Nachhilfe-Streams, Spendenaktionen: Wir reden nicht nur über Probleme, wir lösen sie im Kleinen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <!-- ============ COMMUNITY / SOCIALS ============ -->
+  <section id="community" class="relative z-10 mx-auto max-w-6xl scroll-mt-28 px-4 py-20 sm:py-28">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="text-xs google-sans-gs font-bold uppercase tracking-[0.25em] text-red-500">Stay connected</p>
+      <h2 class="mt-3 cal-sans text-3xl font-bold sm:text-5xl">hier findest du uns<span class="text-red-600">:</span></h2>
+      <p class="mt-4 text-slate-400 google-sans-gs">Live, ungeschnitten und immer mit Chat: Such dir deine Lieblings-Plattform aus — oder nimm einfach alle.</p>
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="https://twitch.tv/bktofficial" target="_blank" rel="noopener" class="reveal glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-violet-600/20 text-2xl text-violet-400"><i class="bi bi-twitch"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-green-500/15 px-3 py-1 text-xs font-bold text-green-400 google-sans-gs"><span class="size-1.5 rounded-full bg-green-400 animate-pulse"></span> LIVE REGELMÄSSIG</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">Twitch</h3>
+        <p class="text-sm text-violet-300/80 google-sans-gs font-semibold">@bktofficial</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">Talk, Gaming & Community-Abende. Hier entsteht fast alles.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-violet-400 google-sans-gs">Folgen <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+
+      <a href="https://youtube.com/@bundniskevinteller?si=L2JyZd6RMqOUY0Ls" target="_blank" rel="noopener" class="reveal reveal-delay-1 glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-red-600/20 text-2xl text-red-500"><i class="bi bi-youtube"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-300 google-sans-gs"><span class="material-icons-round text-sm">play_circle</span> HIGHLIGHTS</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">YouTube</h3>
+        <p class="text-sm text-red-300/80 google-sans-gs font-semibold">@bundniskevinteller</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">Best-ofs, Erklärvideos & Wahlprogramm zum Nachschauen.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-red-400 google-sans-gs">Abonnieren <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+
+      <a href="https://www.reddit.com/u/bktofficial/s/ydKQLLgj7Q" target="_blank" rel="noopener" class="reveal reveal-delay-2 glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-orange-600/20 text-2xl text-orange-500"><i class="bi bi-reddit"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-300 google-sans-gs"><span class="material-icons-round text-sm">forum</span> DISKUSSION</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">Reddit</h3>
+        <p class="text-sm text-orange-300/80 google-sans-gs font-semibold">u/bktofficial</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">Thesen, Umfragen & lange Threads — hier wird debattiert.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-orange-400 google-sans-gs">Mitdiskutieren <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+
+      <a href="#" class="reveal glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-indigo-600/20 text-2xl text-indigo-400"><i class="bi bi-discord"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-indigo-500/15 px-3 py-1 text-xs font-bold text-indigo-300 google-sans-gs"><span class="material-icons-round text-sm">group</span> HERZSTÜCK</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">Discord</h3>
+        <p class="text-sm text-indigo-300/80 google-sans-gs font-semibold">BKT Server</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">Planung, Memes, Support & direkter Draht zum Team.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-indigo-300 google-sans-gs">Beitreten <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+
+      <a href="#" class="reveal reveal-delay-1 glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-pink-600/20 text-2xl text-pink-400"><i class="bi bi-tiktok"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-300 google-sans-gs"><span class="material-icons-round text-sm">bolt</span> SHORTS</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">TikTok</h3>
+        <p class="text-sm text-pink-300/80 google-sans-gs font-semibold">@bktofficial</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">60 Sekunden Haltung: Clips, Fakten & Behind the Scenes.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-pink-300 google-sans-gs">Anschauen <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+
+      <a href="#" class="reveal reveal-delay-2 glass rounded-3xl p-6 card-hover group">
+        <div class="flex items-start justify-between">
+          <span class="flex size-13 p-3 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-600/30 to-orange-500/30 text-2xl text-orange-300"><i class="bi bi-instagram"></i></span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-slate-300 google-sans-gs"><span class="material-icons-round text-sm">photo_camera</span> STORYS</span>
+        </div>
+        <h3 class="mt-4 cal-sans text-xl font-bold">Instagram</h3>
+        <p class="text-sm text-orange-200/80 google-sans-gs font-semibold">@bktofficial</p>
+        <p class="mt-2 text-sm text-slate-400 google-sans-gs">Termine, Zitate & Recap-Carousels für den Alltag.</p>
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-orange-200 google-sans-gs">Folgen <span class="material-icons-round text-base transition-transform group-hover:translate-x-1">arrow_forward</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ WAHLPROGRAMM ============ -->
+  <section id="programm" class="relative min-h-screen scroll-mt-16 overflow-hidden border-y border-white/10 bg-black">
+    <canvas id="redParticles"></canvas>
+    <div class="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:py-28">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <p class="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs google-sans-gs font-bold uppercase tracking-[0.2em] text-slate-300">
+          <span class="material-icons-round text-red-500 text-sm">description</span> Wahlprogramm 2026
+        </p>
+        <h2 class="mt-4 cal-sans text-3xl font-bold sm:text-5xl">unser wahlprogramm<span class="text-red-600">:</span></h2>
+        <p class="mt-4 text-slate-400 google-sans-gs">Sechs Forderungen, ein Ziel: ein Alltag, der für alle funktioniert. Klick eine Karte an für Details.</p>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <details class="program reveal glass rounded-3xl p-6 card-hover group" open>
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-sky-600/20 text-sky-400"><span class="material-icons-round text-2xl">wifi</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Internet für alle</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-sky-400 google-sans-gs">Digitalisierung</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Glasfaser bis zur letzten Milchkanne, bezahlbare Tarife und freies WLAN in Bus, Bahn und Jugendclub. Niemand darf wegen schlechter Leitung abgehängt werden.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> 100 Mbit als Mindeststandard überall</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> Endgeräte-Leihpool für Schüler & Azubis</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program reveal reveal-delay-1 glass rounded-3xl p-6 card-hover group">
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-emerald-600/20 text-emerald-400"><span class="material-icons-round text-2xl">school</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Bildung ohne Hürden</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-emerald-400 google-sans-gs">Chancengleichheit</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Kostenlose Nachhilfe-Streams, offene Lernräume und echte Medienkompetenz ab Klasse 5. Herkunft darf nie über Zukunft entscheiden.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> Lern-Spaces mit Abendöffnung</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> Mentoring-Programm der Community</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program reveal reveal-delay-2 glass rounded-3xl p-6 card-hover group">
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-violet-600/20 text-violet-400"><span class="material-icons-round text-2xl">palette</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Kultur fördern</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-violet-400 google-sans-gs">Kreativität</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Proberäume, offene Bühnen und Förder-Töpfe für Streamer, Musiker & Maker. Kultur ist kein Luxus, sondern Kitt der Gesellschaft.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> 1.000 € Mikro-Stipendien für Newcomer</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> Freie Venues für U27-Events</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program reveal glass rounded-3xl p-6 card-hover group">
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-amber-600/20 text-amber-400"><span class="material-icons-round text-2xl">paid</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Faire Preise</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-amber-400 google-sans-gs">Alltag</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Deckel für Döner? Fast. Wir fordern transparente Preise im ÖPNV, bezahlbaren Wohnraum für Azubis und ein Pfand-System, das wirklich jeder versteht.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> Azubi-Wohnen mit Mietpreisbremse</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> 29-Euro-Ticket für alle unter 27</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program reveal reveal-delay-1 glass rounded-3xl p-6 card-hover group">
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-green-600/20 text-green-400"><span class="material-icons-round text-2xl">park</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Grün & lebenswert</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-green-400 google-sans-gs">Klima & Stadt</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Mehr Bäume als Parkplätze in Innenstädten, Trinkbrunnen an jeder Ecke und Community-Gärten zum Mitmachen statt Zuschauen.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> 1.000 neue Stadtbäume pro Jahr</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> Urban-Gardening-Flächen für alle</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="program reveal reveal-delay-2 glass rounded-3xl p-6 card-hover group">
+          <summary class="flex items-start justify-between gap-3">
+            <span class="flex size-12 items-center justify-center rounded-2xl bg-red-600/20 text-red-400"><span class="material-icons-round text-2xl">favorite</span></span>
+            <span class="program-chevron material-icons-round text-slate-500 mt-1">expand_more</span>
+          </summary>
+          <h3 class="mt-4 cal-sans text-xl font-bold">Ehrenamt stärken</h3>
+          <p class="mt-1 text-xs font-bold uppercase tracking-widest text-red-400 google-sans-gs">Zusammenhalt</p>
+          <div class="program-body">
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 google-sans-gs">Wer sich engagiert, verdient mehr als Applaus: Freistellungen, Fahrtkosten und ein Ehrenamts-Bonus für Ausbildung & Studium.</p>
+            <ul class="mt-3 space-y-1.5 text-sm text-slate-400 google-sans-gs">
+              <li class="flex gap-2"><span class="text-red-500">—</span> Anerkennung auf Zeugnissen</li>
+              <li class="flex gap-2"><span class="text-red-500">—</span> Unkomplizierte Förderanträge in 10 Min</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <p class="reveal mt-8 text-center text-sm text-slate-500 google-sans-gs">Das volle Programm als PDF? Kommt bald — bis dahin gilt: Frag uns einfach live im Stream.</p>
+    </div>
+  </section>
+
+  <!-- ============ AKTUELLES ============ -->
+  <section id="aktuelles" class="relative z-10 mx-auto max-w-6xl scroll-mt-28 px-4 py-20 sm:py-28">
+    <div class="reveal flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-xs google-sans-gs font-bold uppercase tracking-[0.25em] text-red-500">Neues aus dem Bündnis</p>
+        <h2 class="mt-3 cal-sans text-3xl font-bold sm:text-5xl">aktuelles<span class="text-red-600">.</span></h2>
+      </div>
+      <a href="#community" class="inline-flex items-center gap-2 text-sm font-bold text-slate-300 google-sans-gs hover:text-white">Alle Updates im Discord <span class="material-icons-round text-base">arrow_forward</span></a>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <article class="reveal glass rounded-3xl overflow-hidden card-hover">
+        <div class="flex h-36 items-center justify-center bg-gradient-to-br from-red-900 via-red-700 to-orange-600">
+          <span class="material-icons-round text-6xl text-white/80">live_tv</span>
+        </div>
+        <div class="p-6">
+          <p class="inline-flex rounded-full bg-red-600/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-red-400 google-sans-gs">01. Okt 2026 · Stream</p>
+          <h3 class="mt-3 cal-sans text-xl font-bold">Townhall: Eure Fragen ans Bündnis</h3>
+          <p class="mt-2 text-sm text-slate-400 google-sans-gs">100 Minuten, null Skript: Wir beantworten alles — vom Wahlprogramm bis zu Kevins Lieblings-Döner.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-red-400 google-sans-gs">Erinnerung setzen <span class="material-icons-round text-base">notifications</span></span>
+        </div>
+      </article>
+      <article class="reveal reveal-delay-1 glass rounded-3xl overflow-hidden card-hover">
+        <div class="flex h-36 items-center justify-center bg-gradient-to-br from-violet-900 via-indigo-800 to-sky-700">
+          <span class="material-icons-round text-6xl text-white/80">cleaning_services</span>
+        </div>
+        <div class="p-6">
+          <p class="inline-flex rounded-full bg-violet-600/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-300 google-sans-gs">12. Okt 2026 · Aktion</p>
+          <h3 class="mt-3 cal-sans text-xl font-bold">Clean-up & Chill im Stadtpark</h3>
+          <p class="mt-2 text-sm text-slate-400 google-sans-gs">Müll sammeln, Mate trinken, neue Leute kennenlernen. Handschuhe stellen wir, gute Laune bringst du.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-violet-300 google-sans-gs">Dabei sein <span class="material-icons-round text-base">arrow_forward</span></span>
+        </div>
+      </article>
+      <article class="reveal reveal-delay-2 glass rounded-3xl overflow-hidden card-hover">
+        <div class="flex h-36 items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-800 to-sky-800">
+          <span class="material-icons-round text-6xl text-white/80">school</span>
+        </div>
+        <div class="p-6">
+          <p class="inline-flex rounded-full bg-emerald-600/15 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-emerald-300 google-sans-gs">25. Okt 2026 · Bildung</p>
+          <h3 class="mt-3 cal-sans text-xl font-bold">Nachhilfe-Marathon: Mathe ohne Tränen</h3>
+          <p class="mt-2 text-sm text-slate-400 google-sans-gs">Community-Stream mit echten Lehrer:innen. Bring deine Hausaufgaben mit — wir bringen den Rest.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-bold text-emerald-300 google-sans-gs">Mehr erfahren <span class="material-icons-round text-base">arrow_forward</span></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ MITMACHEN CTA ============ -->
+  <section id="mitmachen" class="relative z-10 mx-auto max-w-6xl scroll-mt-28 px-4 pb-20 sm:pb-28">
+    <div class="reveal relative overflow-hidden rounded-3xl border border-red-600/30 bg-gradient-to-br from-red-950/80 via-black to-black p-8 sm:p-12 red-glow">
+      <div class="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full bg-red-600/25 blur-[100px]"></div>
+      <div class="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full bg-violet-600/20 blur-[100px]"></div>
+      <div class="relative grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="text-xs google-sans-gs font-bold uppercase tracking-[0.25em] text-red-400">Mach mit</p>
+          <h2 class="mt-3 cal-sans text-3xl font-bold sm:text-5xl">kevin braucht dich<span class="text-red-600">.</span><br />wirklich<span class="text-red-600">.</span></h2>
+          <p class="mt-4 text-slate-300 google-sans-gs">Ob Meme-Lord, Orga-Talent oder stiller Supporter: Bei uns findet jede:r einen Platz. In 3 Schritten bist du dabei.</p>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href="#community" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-3 font-bold google-sans-gs shadow-xl shadow-red-600/30 transition hover:-translate-y-0.5 hover:bg-red-500">
+              <i class="bi bi-discord"></i> Discord beitreten
+            </a>
+            <a href="https://twitch.tv/bktofficial" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3 font-bold google-sans-gs transition hover:bg-white/10">
+              <i class="bi bi-twitch text-violet-400"></i> Stream einschalten
+            </a>
+          </div>
+        </div>
+        <ol class="space-y-3">
+          <li class="flex items-center gap-4 rounded-2xl glass p-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-red-600 font-bold cal-sans text-lg">1</span>
+            <div><p class="font-bold google-sans-gs">Folgen & reinschauen</p><p class="text-sm text-slate-400 google-sans-gs">Such dir eine Plattform aus und sag Hallo im Chat.</p></div>
+          </li>
+          <li class="flex items-center gap-4 rounded-2xl glass p-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10 font-bold cal-sans text-lg">2</span>
+            <div><p class="font-bold google-sans-gs">Mitdiskutieren & abstimmen</p><p class="text-sm text-slate-400 google-sans-gs">Bring Ideen ein — die besten landen im Programm.</p></div>
+          </li>
+          <li class="flex items-center gap-4 rounded-2xl glass p-4">
+            <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10 font-bold cal-sans text-lg">3</span>
+            <div><p class="font-bold google-sans-gs">Mitgestalten & anpacken</p><p class="text-sm text-slate-400 google-sans-gs">Von Clip-Cutting bis Clean-up: Alles zählt.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="relative z-10 border-t border-white/10 bg-black/70 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <div class="grid gap-8 md:grid-cols-3">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="flex size-10 items-center justify-center rounded-xl bg-red-600 text-white"><span class="material-icons-round">how_to_vote</span></span>
+            <p class="cal-sans text-lg font-bold">Bündnis Kevin Teller<span class="text-red-600">.</span></p>
+          </div>
+          <p class="mt-3 max-w-xs text-sm text-slate-400 google-sans-gs">wir wollen etwas bewegen. Community-getrieben, ehrenamtlich, mit Humor und Haltung.</p>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 google-sans-gs">Navigation</p>
+          <ul class="mt-3 space-y-2 text-sm google-sans-gs text-slate-300">
+            <li><a href="#mission" class="hover:text-white">Mission</a></li>
+            <li><a href="#werte" class="hover:text-white">Werte</a></li>
+            <li><a href="#programm" class="hover:text-white">Wahlprogramm</a></li>
+            <li><a href="#aktuelles" class="hover:text-white">Aktuelles</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 google-sans-gs">Socials</p>
+          <div class="mt-3 flex gap-2">
+            <a href="https://twitch.tv/bktofficial" aria-label="Twitch" class="flex size-11 items-center justify-center rounded-xl glass text-lg text-violet-400 transition hover:scale-110 hover:text-violet-300"><i class="bi bi-twitch"></i></a>
+            <a href="https://youtube.com/@bundniskevinteller?si=L2JyZd6RMqOUY0Ls" aria-label="YouTube" class="flex size-11 items-center justify-center rounded-xl glass text-lg text-red-500 transition hover:scale-110 hover:text-red-400"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.reddit.com/u/bktofficial/s/ydKQLLgj7Q" aria-label="Reddit" class="flex size-11 items-center justify-center rounded-xl glass text-lg text-orange-500 transition hover:scale-110 hover:text-orange-400"><i class="bi bi-reddit"></i></a>
+            <a href="#" aria-label="Discord" class="flex size-11 items-center justify-center rounded-xl glass text-lg text-indigo-400 transition hover:scale-110 hover:text-indigo-300"><i class="bi bi-discord"></i></a>
+          </div>
+          <p class="mt-4 text-sm text-slate-500 google-sans-gs">Fragen? Schreib uns einfach im Stream-Chat.</p>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 google-sans-gs sm:flex-row">
+        <p>© <span id="year">2026</span> Bündnis Kevin Teller — mit <span class="text-red-500">♥</span> & Community gemacht.</p>
+        <p class="uppercase tracking-[0.2em]">random.html · v2</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="scripts/particles.js"></script>
+  <script>
+    // Mobile Menü
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Navbar-Schatten beim Scrollen
+    const navbar = document.getElementById('navbar');
+    addEventListener('scroll', () => {
+      navbar.style.transform = 'translateY(0)';
+      navbar.firstElementChild.style.boxShadow = scrollY > 24
+        ? '0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(220,38,38,.25)'
+        : '';
+    }, { passive: true });
+
+    // Reveal on Scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+
+    // Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Zähler-Animation für Stats
+    const counters = document.querySelectorAll('[data-count]');
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target, target = +el.dataset.count;
+        let cur = 0;
+        const step = () => { cur += Math.max(1, Math.round(target / 30)); if (cur >= target) { el.textContent = target; } else { el.textContent = cur; requestAnimationFrame(step); } };
+        step();
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(c => cio.observe(c));
+  </script>
 </body>
 </html>
